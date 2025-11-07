@@ -11,7 +11,7 @@ import (
 	"github.com/go-chi/chi/v5/middleware"
 	"github.com/go-chi/httprate"
 
-	"my-website/pages"
+	pages "my-website/pages/index"
 	"my-website/utils"
 )
 
