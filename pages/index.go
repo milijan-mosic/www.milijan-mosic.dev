@@ -27,5 +27,8 @@ func Homepage(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.Header().Set("Content-Type", "text/html")
-	resume.Page(content).Render(r.Context(), w)
+	err = resume.Page(content).Render(r.Context(), w)
+	if err != nil {
+		panic(err)
+	}
 }
