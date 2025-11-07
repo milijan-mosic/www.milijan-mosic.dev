@@ -1,7 +1,7 @@
 # Base
 
 Software Engineer
-Building efficient, scalable, and secure systems — from microservices to full-stack solutions. 
+Building efficient, scalable, and secure systems — from microservices to full-stack solutions.
 
 Motto "PPP"
 
@@ -54,7 +54,7 @@ From resume...
 “Working with Milijan was a seamless experience — he combines technical rigor with creative thinking.”
 — [Future Placeholder Name], Software Engineer
 
-# CTA
+## CTA
 
 Looking to build something together?
 Let’s talk about your next project or collaboration.
