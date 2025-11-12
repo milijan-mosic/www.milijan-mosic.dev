@@ -2,7 +2,8 @@ import LiquidBackground from "https://cdn.jsdelivr.net/npm/threejs-components@0.
 
 const app = LiquidBackground(document.getElementById("canvas"));
 
-app.loadImage("https://assets.codepen.io/33787/liquid.webp");
+app.loadImage("https://images.unsplash.com/photo-1618764117597-0626010bf40f");
+// app.loadImage("https://assets.codepen.io/33787/liquid.webp");
 // app.liquidPlane.material.metalness = 0.75;
 // app.liquidPlane.material.roughness = 0.25;
 // app.liquidPlane.uniforms.displacementScale.value = 5;
