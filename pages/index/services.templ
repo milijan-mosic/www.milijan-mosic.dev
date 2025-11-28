@@ -1,5 +1,32 @@
 package pages
 
+import "fmt"
+
+type Service struct {
+	Icon      string
+	Title     string
+	Paragraph string
+}
+
+var allServices = []Service{
+	{Icon: "fa-solid fa-globe", Title: "Web App Development", Paragraph: "Modern, responsive, and fast front-end applications. Building fast, secure, and maintainable APIs, microservices, and real-time systems"},
+	{Icon: "fa-solid fa-cloud", Title: "Cloud App Development", Paragraph: "CI/CD pipelines, Docker, Kubernetes, AWS infrastructure"},
+	{Icon: "fa-solid fa-desktop", Title: "Desktop App Development", Paragraph: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dictum velit quis ligula viverra maximus"},
+	{Icon: "fa-solid fa-mobile", Title: "Mobile App Development", Paragraph: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer dictum velit quis ligula viverra maximus"},
+}
+
 templ Services() {
-	<section class="glass-card p-4 m-4"></section>
+	<section class="glass-card p-4 m-4">
+		for _, service := range allServices {
+			<div class="flex flex-col justify-center w-full m-4">
+				<div class="flex flex-col justify-center items-center">
+					<i class={ fmt.Sprintf("text-4x %s", service.Icon) }></i>
+					<h2 class="text-xl">{ service.Title }</h2>
+				</div>
+				<div class="mt-8">
+					<p>{ service.Paragraph }</p>
+				</div>
+			</div>
+		}
+	</section>
 }
