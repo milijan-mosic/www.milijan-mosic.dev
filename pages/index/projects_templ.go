@@ -8,6 +8,59 @@ package pages
 import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
+type Project struct {
+	Name         string
+	Description  string
+	Technologies []string
+	Role         []string
+	Thumbnail    string
+}
+
+var allProjects = []Project{
+	Project{
+		Name:         "Aleksandra Bengin",
+		Description:  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mauris ipsum",
+		Technologies: []string{"React", "Python", "PostgreSQL"},
+		Role:         []string{"Frontend", "Backend"},
+		Thumbnail:    "/static/project.png",
+	},
+	Project{
+		Name:         "Alloqis",
+		Description:  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mauris ipsum",
+		Technologies: []string{"React", "Python", "PostgreSQL"},
+		Role:         []string{"Frontend", "Backend"},
+		Thumbnail:    "/static/project.png",
+	},
+	Project{
+		Name:         "Recall Taxi",
+		Description:  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mauris ipsum",
+		Technologies: []string{"React", "Python", "PostgreSQL"},
+		Role:         []string{"Frontend", "Backend"},
+		Thumbnail:    "/static/project.png",
+	},
+	Project{
+		Name:         "CyberPopUp",
+		Description:  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mauris ipsum",
+		Technologies: []string{"React", "Python", "PostgreSQL"},
+		Role:         []string{"Frontend", "Backend"},
+		Thumbnail:    "/static/project.png",
+	},
+	Project{
+		Name:         "Swiss Insurance Leads",
+		Description:  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mauris ipsum",
+		Technologies: []string{"React", "Python", "PostgreSQL"},
+		Role:         []string{"Frontend", "Backend"},
+		Thumbnail:    "/static/project.png",
+	},
+	Project{
+		Name:         "Milos Tattoo",
+		Description:  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mauris ipsum",
+		Technologies: []string{"React", "Python", "PostgreSQL"},
+		Role:         []string{"Frontend", "Backend"},
+		Thumbnail:    "/static/project.png",
+	},
+}
+
 func Projects() templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
@@ -29,7 +82,115 @@ func Projects() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"glass-card p-4 m-4\"></section>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"glass-card p-6 m-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		for _, project := range allProjects {
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<div class=\"flex flex-col items-center text-center bg-white/5 backdrop-blur-lg shadow-lg rounded-xl p-6 w-full transition\"><img src=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var2 string
+			templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(project.Thumbnail)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `pages/index/projects.templ`, Line: 61, Col: 28}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "\" alt=\"")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var3 string
+			templ_7745c5c3_Var3, templ_7745c5c3_Err = templ.JoinStringErrs(project.Name)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `pages/index/projects.templ`, Line: 62, Col: 23}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var3))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "\" class=\"w-full h-48 object-cover rounded-lg shadow-md mb-4\"><h2 class=\"text-2xl font-semibold mb-2\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var4 string
+			templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(project.Name)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `pages/index/projects.templ`, Line: 66, Col: 19}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "</h2><p class=\"text-gray-200 text-sm mb-4\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var5 string
+			templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(project.Description)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `pages/index/projects.templ`, Line: 69, Col: 26}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "</p><div class=\"flex flex-wrap justify-center gap-2 my-2\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			for _, tech := range project.Technologies {
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "<span class=\"px-3 py-1 text-xs rounded-full bg-blue-600/30 border border-blue-600/40\">")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				var templ_7745c5c3_Var6 string
+				templ_7745c5c3_Var6, templ_7745c5c3_Err = templ.JoinStringErrs(tech)
+				if templ_7745c5c3_Err != nil {
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `pages/index/projects.templ`, Line: 74, Col: 13}
+				}
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var6))
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "</span>")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "</div><div class=\"flex flex-wrap justify-center gap-2 mt-2\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			for _, role := range project.Role {
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 10, "<span class=\"px-3 py-1 text-xs rounded-full bg-purple-600/30 border border-purple-600/40\">")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				var templ_7745c5c3_Var7 string
+				templ_7745c5c3_Var7, templ_7745c5c3_Err = templ.JoinStringErrs(role)
+				if templ_7745c5c3_Err != nil {
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `pages/index/projects.templ`, Line: 81, Col: 13}
+				}
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var7))
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 11, "</span>")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 12, "</div></div>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, "</section>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
