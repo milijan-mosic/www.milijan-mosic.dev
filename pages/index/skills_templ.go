@@ -8,6 +8,107 @@ package pages
 import "github.com/a-h/templ"
 import templruntime "github.com/a-h/templ/runtime"
 
+type Skill struct {
+	Icon string
+	Name string
+}
+
+type Group struct {
+	Title  string
+	Skills []Skill
+}
+
+var frontendSkills = []Skill{
+	{Icon: "fa-solid fa-globe", Name: "React"},
+	{Icon: "fa-solid fa-cloud", Name: "TypeScript"},
+	{Icon: "fa-solid fa-mobile", Name: "Tailwind CSS"},
+	{Icon: "fa-solid fa-desktop", Name: "Vite"},
+}
+var frontend = Group{Title: "Frontend", Skills: frontendSkills}
+
+var backendSkills = []Skill{
+	{Icon: "fa-solid fa-globe", Name: "Go"},
+	{Icon: "fa-solid fa-cloud", Name: "Python"},
+	{Icon: "fa-solid fa-mobile", Name: "NodeJS"},
+	{Icon: "fa-solid fa-desktop", Name: "SQL"},
+}
+var backend = Group{Title: "Backend", Skills: backendSkills}
+
+var databaseSkills = []Skill{
+	{Icon: "fa-solid fa-globe", Name: "PostgreSQL"},
+	{Icon: "fa-solid fa-cloud", Name: "CouchDB"},
+	{Icon: "fa-solid fa-mobile", Name: "MongoDB"},
+	{Icon: "fa-solid fa-desktop", Name: "Redis"},
+	{Icon: "fa-solid fa-desktop", Name: "MinIO"},
+}
+var database = Group{Title: "Databases", Skills: databaseSkills}
+
+var sysAdminSkills = []Skill{
+	{Icon: "fa-solid fa-globe", Name: "Linux"},
+	{Icon: "fa-solid fa-mobile", Name: "Bash"},
+	{Icon: "fa-solid fa-mobile", Name: "Caddy"},
+	{Icon: "fa-solid fa-mobile", Name: "Ngnix"},
+}
+var sysAdmin = Group{Title: "System Administration", Skills: sysAdminSkills}
+
+var devOpsSkills = []Skill{
+	{Icon: "fa-solid fa-desktop", Name: "GitLab CI"},
+	{Icon: "fa-solid fa-desktop", Name: "ArgoCD"},
+	{Icon: "fa-solid fa-mobile", Name: "Docker"},
+	{Icon: "fa-solid fa-desktop", Name: "Kubernetes"},
+	{Icon: "fa-solid fa-desktop", Name: "Grafana"},
+	{Icon: "fa-solid fa-desktop", Name: "Prometheus"},
+}
+var devOps = Group{Title: "DevOps", Skills: devOpsSkills}
+
+var cloudSkills = []Skill{
+	{Icon: "fa-solid fa-desktop", Name: "AWS"},
+	{Icon: "fa-solid fa-desktop", Name: "Kafka"},
+	{Icon: "fa-solid fa-desktop", Name: "EC2"},
+	{Icon: "fa-solid fa-desktop", Name: "Lambda"},
+	{Icon: "fa-solid fa-desktop", Name: "DynamoDB"},
+	{Icon: "fa-solid fa-mobile", Name: "S3"},
+	{Icon: "fa-solid fa-mobile", Name: "SQS"},
+}
+var cloud = Group{Title: "Cloud", Skills: cloudSkills}
+
+var managementSkills = []Skill{
+	{Icon: "fa-solid fa-globe", Name: "Git"},
+	{Icon: "fa-solid fa-globe", Name: "Jira"},
+	{Icon: "fa-solid fa-cloud", Name: "Trello"},
+	{Icon: "fa-solid fa-mobile", Name: "Slack"},
+	{Icon: "fa-solid fa-cloud", Name: "SCRUM"},
+	{Icon: "fa-solid fa-cloud", Name: "Kanban"},
+}
+var management = Group{Title: "Management", Skills: managementSkills}
+
+var documentationSkills = []Skill{
+	{Icon: "fa-solid fa-globe", Name: "Insomnia"},
+	{Icon: "fa-solid fa-globe", Name: "Postman"},
+	{Icon: "fa-solid fa-cloud", Name: "Swagger"},
+	{Icon: "fa-solid fa-cloud", Name: "Confluence"},
+	{Icon: "fa-solid fa-cloud", Name: "MkDocs"},
+}
+var documentation = Group{Title: "Documentation", Skills: documentationSkills}
+
+var languageSkills = []Skill{
+	{Icon: "fa-solid fa-globe", Name: "English (C1)"},
+	{Icon: "fa-solid fa-globe", Name: "Serbian (Native)"},
+}
+var language = Group{Title: "Languages", Skills: languageSkills}
+
+var allSkillGroups = []Group{
+	frontend,
+	backend,
+	database,
+	sysAdmin,
+	devOps,
+	cloud,
+	management,
+	documentation,
+	language,
+}
+
 func Skills() templ.Component {
 	return templruntime.GeneratedTemplate(func(templ_7745c5c3_Input templruntime.GeneratedComponentInput) (templ_7745c5c3_Err error) {
 		templ_7745c5c3_W, ctx := templ_7745c5c3_Input.Writer, templ_7745c5c3_Input.Context
@@ -29,7 +130,75 @@ func Skills() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"glass-card p-4 m-4\"></section>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"glass-card m-4\">")
+		if templ_7745c5c3_Err != nil {
+			return templ_7745c5c3_Err
+		}
+		for _, group := range allSkillGroups {
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<div class=\"m-4 flex flex-col\"><h2 class=\"text-2xl font-bold mb-4\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			var templ_7745c5c3_Var2 string
+			templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(group.Title)
+			if templ_7745c5c3_Err != nil {
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `pages/index/skills.templ`, Line: 108, Col: 53}
+			}
+			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "</h2><div class=\"flex flex-wrap\">")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+			for _, skill := range group.Skills {
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<div class=\"flex flex-col justify-center items-center text-center m-1\"><div class=\"flex items-center justify-center bg-black text-white rounded-xl w-16 h-16 text-3xl\">")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				var templ_7745c5c3_Var3 = []any{skill.Icon}
+				templ_7745c5c3_Err = templ.RenderCSSItems(ctx, templ_7745c5c3_Buffer, templ_7745c5c3_Var3...)
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 5, "<i class=\"")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				var templ_7745c5c3_Var4 string
+				templ_7745c5c3_Var4, templ_7745c5c3_Err = templ.JoinStringErrs(templ.CSSClasses(templ_7745c5c3_Var3).String())
+				if templ_7745c5c3_Err != nil {
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `pages/index/skills.templ`, Line: 1, Col: 0}
+				}
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var4))
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 6, "\"></i></div><p>")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				var templ_7745c5c3_Var5 string
+				templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(skill.Name)
+				if templ_7745c5c3_Err != nil {
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `pages/index/skills.templ`, Line: 115, Col: 22}
+				}
+				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 7, "</p></div>")
+				if templ_7745c5c3_Err != nil {
+					return templ_7745c5c3_Err
+				}
+			}
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 8, "</div></div>")
+			if templ_7745c5c3_Err != nil {
+				return templ_7745c5c3_Err
+			}
+		}
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 9, "</section>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}

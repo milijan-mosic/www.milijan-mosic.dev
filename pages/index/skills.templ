@@ -1,5 +1,122 @@
 package pages
 
+type Skill struct {
+	Icon string
+	Name string
+}
+
+type Group struct {
+	Title  string
+	Skills []Skill
+}
+
+var frontendSkills = []Skill{
+	{Icon: "fa-solid fa-globe", Name: "React"},
+	{Icon: "fa-solid fa-cloud", Name: "TypeScript"},
+	{Icon: "fa-solid fa-mobile", Name: "Tailwind CSS"},
+	{Icon: "fa-solid fa-desktop", Name: "Vite"},
+}
+var frontend = Group{Title: "Frontend", Skills: frontendSkills}
+
+var backendSkills = []Skill{
+	{Icon: "fa-solid fa-globe", Name: "Go"},
+	{Icon: "fa-solid fa-cloud", Name: "Python"},
+	{Icon: "fa-solid fa-mobile", Name: "NodeJS"},
+	{Icon: "fa-solid fa-desktop", Name: "SQL"},
+}
+var backend = Group{Title: "Backend", Skills: backendSkills}
+
+var databaseSkills = []Skill{
+	{Icon: "fa-solid fa-globe", Name: "PostgreSQL"},
+	{Icon: "fa-solid fa-cloud", Name: "CouchDB"},
+	{Icon: "fa-solid fa-mobile", Name: "MongoDB"},
+	{Icon: "fa-solid fa-desktop", Name: "Redis"},
+	{Icon: "fa-solid fa-desktop", Name: "MinIO"},
+}
+var database = Group{Title: "Databases", Skills: databaseSkills}
+
+var sysAdminSkills = []Skill{
+	{Icon: "fa-solid fa-globe", Name: "Linux"},
+	{Icon: "fa-solid fa-mobile", Name: "Bash"},
+	{Icon: "fa-solid fa-mobile", Name: "Caddy"},
+	{Icon: "fa-solid fa-mobile", Name: "Ngnix"},
+}
+var sysAdmin = Group{Title: "System Administration", Skills: sysAdminSkills}
+
+var devOpsSkills = []Skill{
+	{Icon: "fa-solid fa-desktop", Name: "GitLab CI"},
+	{Icon: "fa-solid fa-desktop", Name: "ArgoCD"},
+	{Icon: "fa-solid fa-mobile", Name: "Docker"},
+	{Icon: "fa-solid fa-desktop", Name: "Kubernetes"},
+	{Icon: "fa-solid fa-desktop", Name: "Grafana"},
+	{Icon: "fa-solid fa-desktop", Name: "Prometheus"},
+}
+var devOps = Group{Title: "DevOps", Skills: devOpsSkills}
+
+var cloudSkills = []Skill{
+	{Icon: "fa-solid fa-desktop", Name: "AWS"},
+	{Icon: "fa-solid fa-desktop", Name: "Kafka"},
+	{Icon: "fa-solid fa-desktop", Name: "EC2"},
+	{Icon: "fa-solid fa-desktop", Name: "Lambda"},
+	{Icon: "fa-solid fa-desktop", Name: "DynamoDB"},
+	{Icon: "fa-solid fa-mobile", Name: "S3"},
+	{Icon: "fa-solid fa-mobile", Name: "SQS"},
+}
+var cloud = Group{Title: "Cloud", Skills: cloudSkills}
+
+var managementSkills = []Skill{
+	{Icon: "fa-solid fa-globe", Name: "Git"},
+	{Icon: "fa-solid fa-globe", Name: "Jira"},
+	{Icon: "fa-solid fa-cloud", Name: "Trello"},
+	{Icon: "fa-solid fa-mobile", Name: "Slack"},
+	{Icon: "fa-solid fa-cloud", Name: "SCRUM"},
+	{Icon: "fa-solid fa-cloud", Name: "Kanban"},
+}
+var management = Group{Title: "Management", Skills: managementSkills}
+
+var documentationSkills = []Skill{
+	{Icon: "fa-solid fa-globe", Name: "Insomnia"},
+	{Icon: "fa-solid fa-globe", Name: "Postman"},
+	{Icon: "fa-solid fa-cloud", Name: "Swagger"},
+	{Icon: "fa-solid fa-cloud", Name: "Confluence"},
+	{Icon: "fa-solid fa-cloud", Name: "MkDocs"},
+}
+var documentation = Group{Title: "Documentation", Skills: documentationSkills}
+
+var languageSkills = []Skill{
+	{Icon: "fa-solid fa-globe", Name: "English (C1)"},
+	{Icon: "fa-solid fa-globe", Name: "Serbian (Native)"},
+}
+var language = Group{Title: "Languages", Skills: languageSkills}
+
+var allSkillGroups = []Group{
+	frontend,
+	backend,
+	database,
+	sysAdmin,
+	devOps,
+	cloud,
+	management,
+	documentation,
+	language,
+}
+
 templ Skills() {
-	<section class="glass-card p-4 m-4"></section>
+	<section class="glass-card m-4">
+		for _, group := range allSkillGroups {
+			<div class="m-4 flex flex-col">
+				<h2 class="text-2xl font-bold mb-4">{ group.Title }</h2>
+				<div class="flex flex-wrap">
+					for _, skill := range group.Skills {
+						<div class="flex flex-col justify-center items-center text-center m-1">
+							<div class="flex items-center justify-center bg-black text-white rounded-xl w-16 h-16 text-3xl">
+								<i class={ skill.Icon }></i>
+							</div>
+							<p>{ skill.Name }</p>
+						</div>
+					}
+				</div>
+			</div>
+		}
+	</section>
 }
