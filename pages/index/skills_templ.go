@@ -161,7 +161,7 @@ func Skills() templ.Component {
 				return templ_7745c5c3_Err
 			}
 			for _, skill := range group.Skills {
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<div class=\"flex flex-col items-center w-1/2 mb-4\"><div class=\"flex flex-col items-center justify-center border-1 border-white rounded-xl w-16 h-16 text-3xl\">")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<div class=\"flex flex-col items-center w-1/2 mb-4\"><div class=\"flex flex-col items-center justify-center border-2 border-white rounded-xl w-16 h-16 text-3xl\">")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
