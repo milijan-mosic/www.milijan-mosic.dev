@@ -16,7 +16,9 @@ var allServices = []Service{
 }
 
 templ Services() {
-	<section class="glass-card p-4 m-4">
+	<section class="glass-card p-4 m-4 flex flex-col items-center">
+		<h2 class="text-2xl mb-8">Services</h2>
+
 		for _, service := range allServices {
 			<div class="flex flex-col items-center mb-8">
 				<div class="flex flex-col items-center">
