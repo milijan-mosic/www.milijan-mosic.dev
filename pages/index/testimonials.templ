@@ -50,7 +50,7 @@ var colleagueTestimonials = []Testimonial{
 }
 
 templ testimonialSection(title string, data []Testimonial) {
-	<section class="glass-card p-4 m-4">
+	<section class="glass-card p-4 my-16 mx-4">
 		<h2 class="text-3xl font-semibold text-center mb-4">{ title }</h2>
 		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
 			for _, t := range data {
