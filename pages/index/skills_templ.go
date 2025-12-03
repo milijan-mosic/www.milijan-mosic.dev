@@ -138,12 +138,12 @@ func Skills() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"glass-card p-4 m-4 flex flex-col items-center\"><h2 class=\"text-2xl font-bold mb-8\">Skills</h2>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"glass-card p-4 m-4 flex flex-col items-center\"><h2 class=\"text-2xl font-bold mb-16 mt-4\">Skills</h2>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		for _, group := range allSkillGroups {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<div class=\"flex flex-col items-center w-full mt-8\"><h2 class=\"text-xl mb-4\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<div class=\"flex flex-col items-center w-full mb-8\"><h2 class=\"text-xl mb-4\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
