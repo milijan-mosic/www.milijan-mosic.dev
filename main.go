@@ -31,6 +31,9 @@ func main() {
 	app.Use(middleware.Recoverer)
 
 	app.Get("/", pages.Homepage)
+	app.Route("/api/contact", func(cr chi.Router) {
+		cr.Mount("/", ContactRouter())
+	})
 
 	workDir, _ := os.Getwd()
 	filesDir := http.Dir(filepath.Join(workDir, "static"))

@@ -29,7 +29,7 @@ func CTA() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"glass-card p-4 m-4\"></section>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section id=\"contact\" class=\"glass-card p-4 m-4 max-w-3xl mx-auto rounded-xl\"><h2 class=\"text-3xl font-semibold text-center mb-6\">Contact Me</h2><form id=\"contact-form\" class=\"flex flex-col gap-4\"><!-- Name --><div class=\"flex flex-col\"><label for=\"name\" class=\"text-sm font-medium mb-1\">Your Name</label> <input type=\"text\" id=\"name\" name=\"name\" required class=\"p-3 rounded-lg bg-white/10 border border-white/20 focus:outline-none focus:border-white/40\"></div><!-- Email --><div class=\"flex flex-col\"><label for=\"email\" class=\"text-sm font-medium mb-1\">Your Email</label> <input type=\"email\" id=\"email\" name=\"email\" required class=\"p-3 rounded-lg bg-white/10 border border-white/20 focus:outline-none focus:border-white/40\"></div><!-- Message --><div class=\"flex flex-col\"><label for=\"message\" class=\"text-sm font-medium mb-1\">Message</label> <textarea id=\"message\" name=\"message\" required rows=\"5\" class=\"p-3 rounded-lg bg-white/10 border border-white/20 focus:outline-none focus:border-white/40\"></textarea></div><!-- Submit --><button type=\"submit\" class=\"w-full mt-4 py-3 rounded-lg bg-blue-600 hover:bg-blue-700 transition text-white font-semibold\">Send Message</button><!-- Status message --><p id=\"contact-status\" class=\"text-center text-sm mt-3\"></p></form></section>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
