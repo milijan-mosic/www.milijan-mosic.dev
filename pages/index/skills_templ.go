@@ -30,18 +30,26 @@ var backendSkills = []Skill{
 	{Icon: "fa-solid fa-globe", Name: "Go"},
 	{Icon: "fa-solid fa-cloud", Name: "Python"},
 	{Icon: "fa-solid fa-mobile", Name: "NodeJS"},
-	{Icon: "fa-solid fa-desktop", Name: "SQL"},
 }
 var backend = Group{Title: "Backend", Skills: backendSkills}
 
 var databaseSkills = []Skill{
+	{Icon: "fa-solid fa-desktop", Name: "SQL"},
 	{Icon: "fa-solid fa-globe", Name: "PostgreSQL"},
-	{Icon: "fa-solid fa-cloud", Name: "CouchDB"},
+	// {Icon: "fa-solid fa-cloud", Name: "CouchDB"},
 	{Icon: "fa-solid fa-mobile", Name: "MongoDB"},
-	{Icon: "fa-solid fa-desktop", Name: "Redis"},
 	{Icon: "fa-solid fa-desktop", Name: "MinIO"},
 }
 var database = Group{Title: "Databases", Skills: databaseSkills}
+
+var technologiesSkills = []Skill{
+	{Icon: "fa-solid fa-desktop", Name: "AWS"},
+	{Icon: "fa-solid fa-globe", Name: "Git"},
+	{Icon: "fa-solid fa-desktop", Name: "Redis"},
+	{Icon: "fa-solid fa-cloud", Name: "Kafka"},
+	{Icon: "fa-solid fa-mobile", Name: "RabbitMQ"},
+}
+var technologies = Group{Title: "Technologies", Skills: technologiesSkills}
 
 var sysAdminSkills = []Skill{
 	{Icon: "fa-solid fa-globe", Name: "Linux"},
@@ -61,52 +69,52 @@ var devOpsSkills = []Skill{
 }
 var devOps = Group{Title: "DevOps", Skills: devOpsSkills}
 
-var cloudSkills = []Skill{
-	{Icon: "fa-solid fa-desktop", Name: "AWS"},
-	{Icon: "fa-solid fa-desktop", Name: "Kafka"},
-	{Icon: "fa-solid fa-desktop", Name: "EC2"},
-	{Icon: "fa-solid fa-desktop", Name: "Lambda"},
-	{Icon: "fa-solid fa-desktop", Name: "DynamoDB"},
-	{Icon: "fa-solid fa-mobile", Name: "S3"},
-	{Icon: "fa-solid fa-mobile", Name: "SQS"},
-}
-var cloud = Group{Title: "Cloud", Skills: cloudSkills}
+// var cloudSkills = []Skill{
+// 	{Icon: "fa-solid fa-desktop", Name: "AWS"},
+// 	{Icon: "fa-solid fa-desktop", Name: "Kafka"},
+// 	{Icon: "fa-solid fa-desktop", Name: "EC2"},
+// 	{Icon: "fa-solid fa-desktop", Name: "Lambda"},
+// 	{Icon: "fa-solid fa-desktop", Name: "DynamoDB"},
+// 	{Icon: "fa-solid fa-mobile", Name: "S3"},
+// 	{Icon: "fa-solid fa-mobile", Name: "SQS"},
+// }
+// var cloud = Group{Title: "Cloud", Skills: cloudSkills}
 
-var managementSkills = []Skill{
-	{Icon: "fa-solid fa-globe", Name: "Git"},
-	{Icon: "fa-solid fa-globe", Name: "Jira"},
-	{Icon: "fa-solid fa-cloud", Name: "Trello"},
-	{Icon: "fa-solid fa-mobile", Name: "Slack"},
-	{Icon: "fa-solid fa-cloud", Name: "SCRUM"},
-	{Icon: "fa-solid fa-cloud", Name: "Kanban"},
-}
-var management = Group{Title: "Management", Skills: managementSkills}
+// var managementSkills = []Skill{
+// 	{Icon: "fa-solid fa-globe", Name: "Jira"},
+// 	{Icon: "fa-solid fa-cloud", Name: "Trello"},
+// 	{Icon: "fa-solid fa-mobile", Name: "Slack"},
+// 	{Icon: "fa-solid fa-cloud", Name: "SCRUM"},
+// 	{Icon: "fa-solid fa-cloud", Name: "Kanban"},
+// }
+// var management = Group{Title: "Management", Skills: managementSkills}
 
-var documentationSkills = []Skill{
-	{Icon: "fa-solid fa-globe", Name: "Insomnia"},
-	{Icon: "fa-solid fa-globe", Name: "Postman"},
-	{Icon: "fa-solid fa-cloud", Name: "Swagger"},
-	{Icon: "fa-solid fa-cloud", Name: "Confluence"},
-	{Icon: "fa-solid fa-cloud", Name: "MkDocs"},
-}
-var documentation = Group{Title: "Documentation", Skills: documentationSkills}
+// var documentationSkills = []Skill{
+// 	{Icon: "fa-solid fa-globe", Name: "Insomnia"},
+// 	{Icon: "fa-solid fa-globe", Name: "Postman"},
+// 	{Icon: "fa-solid fa-cloud", Name: "Swagger"},
+// 	{Icon: "fa-solid fa-cloud", Name: "Confluence"},
+// 	{Icon: "fa-solid fa-cloud", Name: "MkDocs"},
+// }
+// var documentation = Group{Title: "Documentation", Skills: documentationSkills}
 
-var languageSkills = []Skill{
-	{Icon: "fa-solid fa-globe", Name: "English (C1)"},
-	{Icon: "fa-solid fa-globe", Name: "Serbian (Native)"},
-}
-var language = Group{Title: "Languages", Skills: languageSkills}
+// var languageSkills = []Skill{
+// 	{Icon: "fa-solid fa-globe", Name: "English (C1)"},
+// 	{Icon: "fa-solid fa-globe", Name: "Serbian (Native)"},
+// }
+// var language = Group{Title: "Languages", Skills: languageSkills}
 
 var allSkillGroups = []Group{
 	frontend,
 	backend,
 	database,
+	technologies,
 	sysAdmin,
 	devOps,
-	cloud,
-	management,
-	documentation,
-	language,
+	// cloud,
+	// management,
+	// documentation,
+	// language,
 }
 
 func Skills() templ.Component {
@@ -130,19 +138,19 @@ func Skills() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"glass-card m-4\">")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"glass-card p-4 m-4 flex flex-col items-center\"><h2 class=\"text-2xl font-bold mb-8\">Skills</h2>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
 		for _, group := range allSkillGroups {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<div class=\"m-4 flex flex-col\"><h2 class=\"text-2xl font-bold mb-4\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<div class=\"flex flex-col items-center w-full mt-8\"><h2 class=\"text-xl mb-4\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var2 string
 			templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(group.Title)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `pages/index/skills.templ`, Line: 108, Col: 53}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `pages/index/skills.templ`, Line: 118, Col: 42}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
 			if templ_7745c5c3_Err != nil {
@@ -153,7 +161,7 @@ func Skills() templ.Component {
 				return templ_7745c5c3_Err
 			}
 			for _, skill := range group.Skills {
-				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<div class=\"flex flex-col justify-center items-center text-center m-1\"><div class=\"flex items-center justify-center bg-black text-white rounded-xl w-16 h-16 text-3xl\">")
+				templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 4, "<div class=\"flex flex-col items-center w-1/2 mb-4\"><div class=\"flex flex-col items-center justify-center border-1 border-white rounded-xl w-16 h-16 text-3xl\">")
 				if templ_7745c5c3_Err != nil {
 					return templ_7745c5c3_Err
 				}
@@ -182,7 +190,7 @@ func Skills() templ.Component {
 				var templ_7745c5c3_Var5 string
 				templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(skill.Name)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `pages/index/skills.templ`, Line: 115, Col: 22}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `pages/index/skills.templ`, Line: 127, Col: 22}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 				if templ_7745c5c3_Err != nil {
