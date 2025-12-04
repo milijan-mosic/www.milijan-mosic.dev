@@ -17,10 +17,10 @@ var allServices = []Service{
 
 templ Services() {
 	<section class="glass-card p-4 my-16 mx-4 flex flex-col items-center">
-		<h2 class="text-2xl font-bold mb-16 mt-4">Services</h2>
+		<h2 class="text-2xl font-bold mt-4">Services</h2>
 
 		for _, service := range allServices {
-			<div class="flex flex-col items-center mb-8">
+			<div class="flex flex-col items-center mt-16">
 				<div class="flex flex-col items-center">
 					<i class={ fmt.Sprintf("text-3xl %s", service.Icon) }></i>
 					<h2 class="text-xl mt-2">{ service.Title }</h2>
@@ -30,5 +30,7 @@ templ Services() {
 				</div>
 			</div>
 		}
+
+		<div class="mb-8" />
 	</section>
 }
