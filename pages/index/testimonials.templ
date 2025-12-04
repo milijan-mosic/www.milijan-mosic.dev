@@ -50,18 +50,19 @@ var colleagueTestimonials = []Testimonial{
 }
 
 templ testimonialSection(title string, data []Testimonial) {
-	<section class="glass-card p-4 my-16 mx-4">
-		<h2 class="text-3xl font-semibold text-center mb-4">{ title }</h2>
-		<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+	<section class="glass-card p-4 my-16 mx-4 flex flex-col items-center">
+		<h2 class="text-2xl font-bold mt-4">{ title }</h2>
+
+		<div class="flex flex-col items-center mb-8">
 			for _, t := range data {
-				<article class="flex flex-col items-center text-center bg-white/5 backdrop-blur-lg shadow-lg rounded-xl p-4 w-full transition">
+				<article class="flex flex-col items-center text-center bg-white/25 shadow-xl rounded-xl p-4 mt-16">
 					<img
 						src={ t.Image }
 						alt={ t.Name }
-						class="w-20 h-20 rounded-full object-cover shadow-md mb-4"
+						class="w-32 h-32 rounded-full object-cover shadow-lg mb-2"
 					/>
 					<h3 class="text-xl font-semibold">{ t.Name }</h3>
-					<p class="text-sm mb-3">{ t.Company }</p>
+					<p class="mb-4">{ t.Company }</p>
 					<blockquote class="text-sm italic leading-relaxed">
 						{ t.Message }
 					</blockquote>
@@ -73,7 +74,7 @@ templ testimonialSection(title string, data []Testimonial) {
 
 templ Testimonials() {
 	<main>
-		@testimonialSection("Client Testimonials", clientTestimonials)
-		@testimonialSection("Colleague Testimonials", colleagueTestimonials)
+		@testimonialSection("Client Feedback", clientTestimonials)
+		@testimonialSection("Peer Endorsements", colleagueTestimonials)
 	</main>
 }
