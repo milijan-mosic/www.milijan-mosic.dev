@@ -190,7 +190,7 @@ func Projects() templ.Component {
 				return templ_7745c5c3_Err
 			}
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, "<a href=\"#contact-me\" class=\"glass-card p-2 px-4 mb-4 hover:bg-white text-xl flex items-center justify-center shadow-xl\">Let's build something</a></section>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, "<a href=\"#contact-me\" class=\"transition-all duration-75 ease-linear text-lg rounded-full p-2 px-4 mb-4 bg-sky-500 hover:bg-white hover:text-black hover:cursor-pointer\">Let's build something</a></section>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
