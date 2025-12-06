@@ -69,41 +69,6 @@ var devOpsSkills = []Skill{
 }
 var devOps = Group{Title: "DevOps", Skills: devOpsSkills}
 
-// var cloudSkills = []Skill{
-// 	{Icon: "fa-solid fa-desktop", Name: "AWS"},
-// 	{Icon: "fa-solid fa-desktop", Name: "Kafka"},
-// 	{Icon: "fa-solid fa-desktop", Name: "EC2"},
-// 	{Icon: "fa-solid fa-desktop", Name: "Lambda"},
-// 	{Icon: "fa-solid fa-desktop", Name: "DynamoDB"},
-// 	{Icon: "fa-solid fa-mobile", Name: "S3"},
-// 	{Icon: "fa-solid fa-mobile", Name: "SQS"},
-// }
-// var cloud = Group{Title: "Cloud", Skills: cloudSkills}
-
-// var managementSkills = []Skill{
-// 	{Icon: "fa-solid fa-globe", Name: "Jira"},
-// 	{Icon: "fa-solid fa-cloud", Name: "Trello"},
-// 	{Icon: "fa-solid fa-mobile", Name: "Slack"},
-// 	{Icon: "fa-solid fa-cloud", Name: "SCRUM"},
-// 	{Icon: "fa-solid fa-cloud", Name: "Kanban"},
-// }
-// var management = Group{Title: "Management", Skills: managementSkills}
-
-// var documentationSkills = []Skill{
-// 	{Icon: "fa-solid fa-globe", Name: "Insomnia"},
-// 	{Icon: "fa-solid fa-globe", Name: "Postman"},
-// 	{Icon: "fa-solid fa-cloud", Name: "Swagger"},
-// 	{Icon: "fa-solid fa-cloud", Name: "Confluence"},
-// 	{Icon: "fa-solid fa-cloud", Name: "MkDocs"},
-// }
-// var documentation = Group{Title: "Documentation", Skills: documentationSkills}
-
-// var languageSkills = []Skill{
-// 	{Icon: "fa-solid fa-globe", Name: "English (C1)"},
-// 	{Icon: "fa-solid fa-globe", Name: "Serbian (Native)"},
-// }
-// var language = Group{Title: "Languages", Skills: languageSkills}
-
 var allSkillGroups = []Group{
 	frontend,
 	backend,
@@ -111,10 +76,6 @@ var allSkillGroups = []Group{
 	technologies,
 	sysAdmin,
 	devOps,
-	// cloud,
-	// management,
-	// documentation,
-	// language,
 }
 
 func Skills() templ.Component {
@@ -150,7 +111,7 @@ func Skills() templ.Component {
 			var templ_7745c5c3_Var2 string
 			templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(group.Title)
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `pages/index/skills.templ`, Line: 118, Col: 42}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `pages/index/skills.templ`, Line: 78, Col: 42}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
 			if templ_7745c5c3_Err != nil {
@@ -190,7 +151,7 @@ func Skills() templ.Component {
 				var templ_7745c5c3_Var5 string
 				templ_7745c5c3_Var5, templ_7745c5c3_Err = templ.JoinStringErrs(skill.Name)
 				if templ_7745c5c3_Err != nil {
-					return templ.Error{Err: templ_7745c5c3_Err, FileName: `pages/index/skills.templ`, Line: 127, Col: 22}
+					return templ.Error{Err: templ_7745c5c3_Err, FileName: `pages/index/skills.templ`, Line: 85, Col: 22}
 				}
 				_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var5))
 				if templ_7745c5c3_Err != nil {
