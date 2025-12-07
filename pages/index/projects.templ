@@ -61,6 +61,7 @@ templ Projects() {
 		for _, project := range allProjects {
 			<div class="flex flex-col items-center rounded-xl mb-16 bg-white/25">
 				<img
+					fetchpriority="high"
 					src={ project.Thumbnail }
 					alt={ fmt.Sprintf("Screenshot of the project named %s", project.Name) }
 					class="w-full h-fit object-cover rounded-t-2xl bg-white shadow-md mb-4"

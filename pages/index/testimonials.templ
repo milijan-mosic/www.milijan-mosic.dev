@@ -58,6 +58,7 @@ templ testimonialSection(title string, data []Testimonial) {
 			for _, testimonial := range data {
 				<article class="flex flex-col items-center text-center bg-white/25 shadow-xl rounded-xl p-4 mt-16">
 					<img
+						fetchpriority="high"
 						src={ testimonial.Image }
 						alt={ fmt.Sprintf("Photo of the person named ", testimonial.Name) }
 						class="w-32 h-32 rounded-full object-cover shadow-lg mb-2"
