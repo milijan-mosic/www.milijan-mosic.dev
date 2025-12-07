@@ -54,7 +54,7 @@ var allProjects = []Project{
 }
 
 templ Projects() {
-	<section class="glass-card p-4 my-16 mx-4 flex flex-col items-center">
+	<section id="projects" class="glass-card p-4 my-16 mx-4 flex flex-col items-center">
 		<h2 class="text-2xl font-bold mb-16 mt-4">Projects</h2>
 		for _, project := range allProjects {
 			<div class="flex flex-col items-center rounded-xl mb-16 bg-white/25">
@@ -85,7 +85,7 @@ templ Projects() {
 				</div>
 			</div>
 		}
-		<a href="#contact-me" class="transition-all duration-75 ease-linear text-lg rounded-full p-2 px-4 mb-4 bg-sky-500 hover:bg-white hover:text-black hover:cursor-pointer">
+		<a href="/#contact-me" class="transition-all duration-75 ease-linear text-lg rounded-full p-2 px-4 mb-4 bg-sky-500 hover:bg-white hover:text-black hover:cursor-pointer">
 			Let's build something
 		</a>
 	</section>

@@ -82,7 +82,7 @@ func Projects() templ.Component {
 			templ_7745c5c3_Var1 = templ.NopComponent
 		}
 		ctx = templ.ClearChildren(ctx)
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section class=\"glass-card p-4 my-16 mx-4 flex flex-col items-center\"><h2 class=\"text-2xl font-bold mb-16 mt-4\">Projects</h2>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<section id=\"projects\" class=\"glass-card p-4 my-16 mx-4 flex flex-col items-center\"><h2 class=\"text-2xl font-bold mb-16 mt-4\">Projects</h2>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
@@ -190,7 +190,7 @@ func Projects() templ.Component {
 				return templ_7745c5c3_Err
 			}
 		}
-		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, "<a href=\"#contact-me\" class=\"transition-all duration-75 ease-linear text-lg rounded-full p-2 px-4 mb-4 bg-sky-500 hover:bg-white hover:text-black hover:cursor-pointer\">Let's build something</a></section>")
+		templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 13, "<a href=\"/#contact-me\" class=\"transition-all duration-75 ease-linear text-lg rounded-full p-2 px-4 mb-4 bg-sky-500 hover:bg-white hover:text-black hover:cursor-pointer\">Let's build something</a></section>")
 		if templ_7745c5c3_Err != nil {
 			return templ_7745c5c3_Err
 		}
