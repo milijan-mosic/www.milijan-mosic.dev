@@ -1,5 +1,7 @@
 package pages
 
+import "fmt"
+
 type Testimonial struct {
 	Image   string
 	Name    string
@@ -53,17 +55,17 @@ templ testimonialSection(title string, data []Testimonial) {
 	<section id="testimonials" class="glass-card p-4 my-16 mx-4 flex flex-col items-center">
 		<h2 class="text-2xl font-bold mt-4">{ title }</h2>
 		<div class="flex flex-col items-center mb-8">
-			for _, t := range data {
+			for _, testimonial := range data {
 				<article class="flex flex-col items-center text-center bg-white/25 shadow-xl rounded-xl p-4 mt-16">
 					<img
-						src={ t.Image }
-						alt={ t.Name }
+						src={ testimonial.Image }
+						alt={ fmt.Sprintf("Photo of the person named ", testimonial.Name) }
 						class="w-32 h-32 rounded-full object-cover shadow-lg mb-2"
 					/>
-					<h3 class="text-xl font-semibold">{ t.Name }</h3>
-					<p class="mb-4">{ t.Company }</p>
+					<h3 class="text-xl font-semibold">{ testimonial.Name }</h3>
+					<p class="mb-4">{ testimonial.Company }</p>
 					<blockquote class="text-sm italic leading-relaxed">
-						{ t.Message }
+						{ testimonial.Message }
 					</blockquote>
 				</article>
 			}

@@ -1,5 +1,7 @@
 package pages
 
+import "fmt"
+
 type Project struct {
 	Name         string
 	Description  string
@@ -60,7 +62,7 @@ templ Projects() {
 			<div class="flex flex-col items-center rounded-xl mb-16 bg-white/25">
 				<img
 					src={ project.Thumbnail }
-					alt={ project.Name }
+					alt={ fmt.Sprintf("Screenshot of the project named %s", project.Name) }
 					class="w-full h-fit object-cover rounded-t-2xl bg-white shadow-md mb-4"
 				/>
 				<h2 class="text-2xl font-bold font-semibold mb-8">
