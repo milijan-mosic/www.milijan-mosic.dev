@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     button.disabled = false;
     button.className =
-      "transition-all duration-75 ease-linear text-lg rounded-full p-2 px-4 mb-4 bg-sky-500 hover:bg-white hover:text-black hover:cursor-pointer";
+      "transition-all duration-75 ease-linear text-lg rounded-full p-2 px-4 mb-4 bg-sky-800 border-1 border-sky-500 hover:border-white hover:bg-white hover:text-black hover:cursor-pointer";
     button.innerHTML = "Send Request";
   });
 });
