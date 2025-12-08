@@ -89,7 +89,7 @@ func Projects() templ.Component {
 			return templ_7745c5c3_Err
 		}
 		for _, project := range allProjects {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<div class=\"flex flex-col lg:flex-row items-center lg:items-stretch rounded-xl mb-16 bg-white/25\"><img fetchpriority=\"high\" src=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "<div class=\"flex flex-col lg:flex-row items-center lg:items-stretch rounded-xl mb-16 bg-white/25\"><img loading=\"lazy\" src=\"")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

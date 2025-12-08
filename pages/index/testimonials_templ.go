@@ -98,7 +98,7 @@ func testimonialSection(title string, data []Testimonial) templ.Component {
 			return templ_7745c5c3_Err
 		}
 		for _, testimonial := range data {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<article class=\"flex flex-col items-center text-center bg-white/25 shadow-xl rounded-xl p-4 md:p-8 mt-16 lg:m-8 w-full lg:w-[250px]\"><img fetchpriority=\"high\" src=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 3, "<article class=\"flex flex-col items-center text-center bg-white/25 shadow-xl rounded-xl p-4 md:p-8 mt-16 lg:m-8 w-full lg:w-[250px]\"><img loading=\"lazy\" src=\"")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
