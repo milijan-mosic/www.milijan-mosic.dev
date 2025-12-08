@@ -13,7 +13,7 @@
 // app.liquidPlane.uniforms.displacementScale.value = 0;
 // app.setRain(false);
 
-// ----------------------------------------------------------------
+// ---------------------------------------------------------------- #### ----------------------------------------------------------------
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("contact-form");
@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const payload = {
       name: form.name.value.trim(),
       email: form.email.value.trim(),
-      message: form.message.value.trim(),
+      message: form.request.value.trim(),
     };
 
     try {
@@ -41,17 +41,17 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       console.log(res);
-      if (!res.ok) throw new Error("Failed to send message");
+      if (!res.ok) throw new Error("Failed to send request");
 
       status.textContent = "Request sent successfully!";
       status.className =
-        "text-green-500 text-xl mt-4 rounded-full p-4 md:p-8 bg-black/50 text-center";
+        "text-green-500 text-xl mt-4 rounded-full p-4 px-8 bg-black/50 text-center mb-8";
 
       form.reset();
     } catch (err) {
       status.textContent = "Something went wrong. Try again later.";
       status.className =
-        "text-red-500 text-xl mt-4 rounded-full p-4 md:p-8 bg-black/50 text-center";
+        "text-red-500 text-xl mt-4 rounded-full p-4 px-8 bg-black/50 text-center mb-8";
     }
 
     button.disabled = false;
