@@ -1,4 +1,3 @@
-- Desktop layout
 - Fix CTA form
 - Mobile navbar
 
