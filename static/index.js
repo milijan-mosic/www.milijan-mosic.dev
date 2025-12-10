@@ -60,3 +60,47 @@ document.addEventListener("DOMContentLoaded", () => {
     button.innerHTML = "Send Request";
   });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const navbar = document.getElementById("navbar");
+  const menuToggle = document.getElementById("menuToggle");
+  const menuIcon = document.getElementById("menuIcon");
+  const mobileMenu = document.getElementById("mobileMenu");
+
+  let isOpen = false;
+
+  function toggleNavbarVisibility() {
+    if (window.scrollY > 900) {
+      navbar.classList.remove("opacity-0");
+      navbar.classList.add("opacity-100");
+    } else {
+      navbar.classList.add("opacity-0");
+      navbar.classList.remove("opacity-100");
+      isOpen = false;
+      mobileMenu.style.maxHeight = "0px";
+      menuIcon.textContent = "☰";
+    }
+  }
+
+  window.addEventListener("scroll", toggleNavbarVisibility);
+
+  menuToggle.addEventListener("click", () => {
+    isOpen = !isOpen;
+    if (isOpen) {
+      mobileMenu.style.maxHeight = "500px";
+      menuIcon.textContent = "✕";
+    } else {
+      mobileMenu.style.maxHeight = "0px";
+      menuIcon.textContent = "☰";
+    }
+  });
+
+  // FIXME: class name!
+  document.querySelectorAll(".mobile-menu-link").forEach((link) => {
+    link.addEventListener("click", () => {
+      isOpen = false;
+      mobileMenu.style.maxHeight = "0px";
+      menuIcon.textContent = "☰";
+    });
+  });
+});
