@@ -2,7 +2,7 @@
 
 @layer components {
   .glass-card {
-    @apply outline-none overflow-hidden rounded-3xl border border-white/30 bg-white/10 backdrop-blur-lg shadow-xl;
+    @apply outline-none overflow-hidden rounded-3xl border border-white/30 bg-linear-to-br from-white/20 to-transparent backdrop-blur-xl shadow-xl;
   }
 
   .animate {
