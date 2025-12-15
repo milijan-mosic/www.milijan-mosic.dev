@@ -5,7 +5,6 @@
 - Fill website with real content (projects)
 - Ask for testimonials
 
-- Tree-shake Tailwind CSS
 - Minify everything (CSS, JS)
 - Convert all images to webp
 - Ensure all is done in "Best Practices" on Lighthouse
