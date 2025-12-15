@@ -2,7 +2,7 @@
 
 @layer components {
   .glass-card {
-    @apply outline-none overflow-hidden rounded-3xl border border-white/30 bg-white/10 backdrop-blur-xl shadow-xl;
+    @apply outline-none overflow-hidden rounded-3xl border border-white/30 bg-white/10 backdrop-blur-lg shadow-xl;
   }
 
   .animate {
@@ -11,5 +11,9 @@
 
   .mobile-nav-link {
     @apply w-full p-4 text-lg hover:bg-white hover:text-black font-medium;
+  }
+
+  .footer-nav-link {
+    @apply w-12 h-12 m-1 border-2 border-white/35 hover:text-black hover:bg-white rounded-xl text-2xl flex items-center justify-center;
   }
 }
