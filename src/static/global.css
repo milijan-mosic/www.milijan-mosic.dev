@@ -8,4 +8,8 @@
   .animate {
     @apply transition-all duration-75 ease-linear;
   }
+
+  .mobile-nav-link {
+    @apply w-full p-4 text-lg hover:bg-white hover:text-black font-medium;
+  }
 }

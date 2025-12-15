@@ -90,8 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // FIXME: class name!
-  document.querySelectorAll(".mobile-menu-link").forEach((link) => {
+  document.querySelectorAll(".mobile-nav-link").forEach((link) => {
     link.addEventListener("click", () => {
       isOpen = false;
       mobileMenu.style.maxHeight = "0px";
