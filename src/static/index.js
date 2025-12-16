@@ -1,4 +1,4 @@
-import LiquidBackground from "https://cdn.jsdelivr.net/npm/threejs-components@0.0.22/build/backgrounds/liquid1.min.js";
+import LiquidBackground from "/static/liquid.min.js";
 
 const app = LiquidBackground(document.getElementById("canvas"));
 
