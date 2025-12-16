@@ -1,5 +1,5 @@
-- Fill website with real content (projects)
 - Find new icon pack and install it locally
+- Fill website with real content (projects)
 
 - Ask for testimonials
 - Add GORM + SQLite on backend (storing emails)
