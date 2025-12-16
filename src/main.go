@@ -34,6 +34,14 @@ func main() {
 	app.Route("/api/contact", func(cr chi.Router) {
 		cr.Mount("/", ContactRouter())
 	})
+	app.Get("/robots.txt", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "./static/robots.txt")
+	})
+
+	app.Get("/sitemap.xml", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "application/xml")
+		http.ServeFile(w, r, "./static/sitemap.xml")
+	})
 
 	workDir, _ := os.Getwd()
 	filesDir := http.Dir(filepath.Join(workDir, "static"))
