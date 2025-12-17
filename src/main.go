@@ -34,20 +34,39 @@ func main() {
 	app.Route("/api/contact", func(cr chi.Router) {
 		cr.Mount("/", ContactRouter())
 	})
+
 	app.Get("/robots.txt", func(w http.ResponseWriter, r *http.Request) {
 		http.ServeFile(w, r, "./static/robots.txt")
 	})
-
 	app.Get("/sitemap.xml", func(w http.ResponseWriter, r *http.Request) {
 		w.Header().Set("Content-Type", "application/xml")
 		http.ServeFile(w, r, "./static/sitemap.xml")
+	})
+
+	app.Get("/favicon-96x96.png", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "image/png")
+		http.ServeFile(w, r, "./static/favicon/favicon-96x96.png")
+	})
+	app.Get("/favicon.svg", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "image/svg+xml")
+		http.ServeFile(w, r, "./static/favicon/favicon.svg")
+	})
+	app.Get("/favicon.ico", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "./static/favicon/favicon.ico")
+	})
+	app.Get("/apple-touch-icon.png", func(w http.ResponseWriter, r *http.Request) {
+		w.Header().Set("Content-Type", "image/png")
+		http.ServeFile(w, r, "./static/favicon/apple-touch-icon.png")
+	})
+	app.Get("/site.webmanifest", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "./static/favicon/site.webmanifest")
 	})
 
 	workDir, _ := os.Getwd()
 	filesDir := http.Dir(filepath.Join(workDir, "static"))
 	utils.FileServer(app, "/static", filesDir)
 
-	port := "20000"
+	port := "30000"
 	fmt.Printf("Listening on port: %s\n", port)
 	err := http.ListenAndServe(":"+port, app)
 	if err != nil {
