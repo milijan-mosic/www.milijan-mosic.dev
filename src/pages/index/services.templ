@@ -11,15 +11,15 @@ type Service struct {
 var allServices = []Service{
 	{Icon: "web", Title: "Web App Development", Paragraph: "Modern, responsive, and fast front-end applications. Building secure, maintainable APIs, microservices, and real-time systems."},
 	{Icon: "cloud", Title: "Cloud App Development", Paragraph: "Cloud-native deployments with scalability, automation, and strong security. Optimized infrastructure using containers, Kubernetes, and CI/CD."},
-	{Icon: "monitor", Title: "Desktop App Development", Paragraph: "Lightweight, high-performance desktop tools tailored to your workflow. Reliable systems built for speed, productivity, and long-term maintainability."},
-	{Icon: "cellphone", Title: "Mobile App Development", Paragraph: "Smooth, performant mobile apps with clean UX and strong backend integration. Cross-platform, secure, and optimized for a seamless user experience."},
+	{Icon: "desktop", Title: "Desktop App Development", Paragraph: "Lightweight, high-performance desktop tools tailored to your workflow. Reliable systems built for speed, productivity, and long-term maintainability."},
+	{Icon: "mobile", Title: "Mobile App Development", Paragraph: "Smooth, performant mobile apps with clean UX and strong backend integration. Cross-platform, secure, and optimized for a seamless user experience."},
 }
 
 templ RenderService(services []Service) {
 	for _, service := range allServices {
 		<div class="flex flex-col items-center mt-16 lg:w-1/2">
 			<div class="flex flex-col items-center">
-				<span id="icon" class="text-5xl iconify" data-icon={ fmt.Sprintf("mdi-%s", service.Icon) }></span>
+				<img src={ fmt.Sprintf("/static/icons/%s.svg", service.Icon) } class="w-12 h-12 invert" />
 				<h2 class="mt-2 text-xl">{ service.Title }</h2>
 			</div>
 			<div class="mt-4 lg:w-[400px]">

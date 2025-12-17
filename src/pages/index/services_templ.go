@@ -19,8 +19,8 @@ type Service struct {
 var allServices = []Service{
 	{Icon: "web", Title: "Web App Development", Paragraph: "Modern, responsive, and fast front-end applications. Building secure, maintainable APIs, microservices, and real-time systems."},
 	{Icon: "cloud", Title: "Cloud App Development", Paragraph: "Cloud-native deployments with scalability, automation, and strong security. Optimized infrastructure using containers, Kubernetes, and CI/CD."},
-	{Icon: "monitor", Title: "Desktop App Development", Paragraph: "Lightweight, high-performance desktop tools tailored to your workflow. Reliable systems built for speed, productivity, and long-term maintainability."},
-	{Icon: "cellphone", Title: "Mobile App Development", Paragraph: "Smooth, performant mobile apps with clean UX and strong backend integration. Cross-platform, secure, and optimized for a seamless user experience."},
+	{Icon: "desktop", Title: "Desktop App Development", Paragraph: "Lightweight, high-performance desktop tools tailored to your workflow. Reliable systems built for speed, productivity, and long-term maintainability."},
+	{Icon: "mobile", Title: "Mobile App Development", Paragraph: "Smooth, performant mobile apps with clean UX and strong backend integration. Cross-platform, secure, and optimized for a seamless user experience."},
 }
 
 func RenderService(services []Service) templ.Component {
@@ -45,20 +45,20 @@ func RenderService(services []Service) templ.Component {
 		}
 		ctx = templ.ClearChildren(ctx)
 		for _, service := range allServices {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"flex flex-col items-center mt-16 lg:w-1/2\"><div class=\"flex flex-col items-center\"><span id=\"icon\" class=\"text-5xl iconify\" data-icon=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"flex flex-col items-center mt-16 lg:w-1/2\"><div class=\"flex flex-col items-center\"><img src=\"")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var2 string
-			templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("mdi-%s", service.Icon))
+			templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("/static/icons/%s.svg", service.Icon))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `pages/index/services.templ`, Line: 22, Col: 92}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `pages/index/services.templ`, Line: 22, Col: 64}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "\"></span><h2 class=\"mt-2 text-xl\">")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "\" class=\"w-12 h-12 invert\"><h2 class=\"mt-2 text-xl\">")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
