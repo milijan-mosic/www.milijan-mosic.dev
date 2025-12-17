@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     button.disabled = true;
     button.className =
-      "animate text-lg rounded-full p-2 px-4 mb-4 bg-yellow-300 text-black cursor-not-allowed";
+      "p-2 px-4 mb-4 text-lg text-black bg-yellow-300 rounded-full cursor-not-allowed animate";
     button.innerHTML = "Sending...";
 
     const payload = {
@@ -35,23 +35,22 @@ document.addEventListener("DOMContentLoaded", () => {
         body: JSON.stringify(payload),
       });
 
-      console.log(res);
       if (!res.ok) throw new Error("Failed to send request");
 
       status.textContent = "Request sent successfully!";
       status.className =
-        "text-green-500 text-xl mt-4 rounded-full p-4 px-6 md:px-8 bg-black/50 text-center mb-8";
+        "p-4 px-6 mt-4 mb-8 text-xl text-center text-green-500 rounded-full md:px-8 bg-black/50";
 
       form.reset();
     } catch (err) {
       status.textContent = "Something went wrong. Try again later.";
       status.className =
-        "text-red-500 text-xl mt-4 rounded-full p-4 px-6 md:px-8 bg-black/50 text-center mb-8";
+        "p-4 px-6 mt-4 mb-8 text-xl text-center text-red-500 rounded-full md:px-8 bg-black/50";
     }
 
     button.disabled = false;
     button.className =
-      "animate text-lg rounded-full p-2 px-4 mb-4 bg-sky-800 border-1 border-sky-500 hover:border-white hover:bg-white hover:text-black hover:cursor-pointer";
+      "p-2 px-4 mb-4 text-lg bg-sky-800 rounded-full border-sky-500 animate border-1 hover:border-white hover:bg-white hover:text-black hover:cursor-pointer";
     button.innerHTML = "Send Request";
   });
 });
