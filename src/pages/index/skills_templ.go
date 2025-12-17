@@ -22,47 +22,47 @@ type Group struct {
 
 var frontendSkills = []Skill{
 	{Icon: "react", Name: "React"},
-	{Icon: "language-typescript", Name: "TypeScript"},
-	{Icon: "tailwind", Name: "Tailwind CSS"},
-	{Icon: "lightning-bolt", Name: "Vite"},
+	{Icon: "typescript", Name: "TypeScript"},
+	{Icon: "tailwind-css", Name: "Tailwind CSS"},
+	{Icon: "vite", Name: "Vite"},
 }
 var frontend = Group{Title: "Frontend", Skills: frontendSkills}
 
 var backendSkills = []Skill{
-	{Icon: "language-go", Name: "Go"},
-	{Icon: "language-python", Name: "Python"},
+	{Icon: "go", Name: "Go"},
+	{Icon: "python", Name: "Python"},
 	{Icon: "nodejs", Name: "NodeJS"},
-	{Icon: "database-search", Name: "SQL"},
+	{Icon: "sql", Name: "SQL"},
 }
 var backend = Group{Title: "Backend", Skills: backendSkills}
 
 var databaseSkills = []Skill{
-	{Icon: "database", Name: "PostgreSQL"},
-	{Icon: "leaf", Name: "MongoDB"},
-	{Icon: "bird", Name: "MinIO"},
-	{Icon: "duck", Name: "DuckDB"},
+	{Icon: "postgresql", Name: "PostgreSQL"},
+	{Icon: "mongo-db", Name: "MongoDB"},
+	{Icon: "minio", Name: "MinIO"},
+	{Icon: "duckdb", Name: "DuckDB"},
 }
 var database = Group{Title: "Databases", Skills: databaseSkills}
 
 var technologiesSkills = []Skill{
 	{Icon: "aws", Name: "AWS"},
 	{Icon: "git", Name: "Git"},
-	{Icon: "menu", Name: "Redis"},
-	{Icon: "apache-kafka", Name: "Kafka"},
+	{Icon: "redis", Name: "Redis"},
+	{Icon: "kafka", Name: "Kafka"},
 }
 var technologies = Group{Title: "Technologies", Skills: technologiesSkills}
 
 var sysAdminSkills = []Skill{
-	{Icon: "penguin", Name: "Linux"},
+	{Icon: "linux", Name: "Linux"},
 	{Icon: "bash", Name: "Bash"},
-	{Icon: "lock", Name: "Caddy"},
-	{Icon: "server", Name: "Nginx"},
+	{Icon: "caddy", Name: "Caddy"},
+	{Icon: "nginx", Name: "Nginx"},
 }
 var sysAdmin = Group{Title: "System Administration", Skills: sysAdminSkills}
 
 var devOpsSkills = []Skill{
 	{Icon: "gitlab", Name: "GitLab CI"},
-	{Icon: "crosshairs", Name: "Argo CD"},
+	{Icon: "argo-cd", Name: "Argo CD"},
 	{Icon: "docker", Name: "Docker"},
 	{Icon: "kubernetes", Name: "Kubernetes"},
 }
@@ -99,20 +99,20 @@ func RenderSkill(skills []Skill) templ.Component {
 		}
 		ctx = templ.ClearChildren(ctx)
 		for _, skill := range skills {
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"flex flex-col items-center my-2 w-1/2 rounded-xl lg:w-28 hover:text-black hover:bg-white animate\"><div class=\"flex flex-col justify-center items-center w-16 h-16 text-3xl\"><span id=\"icon\" class=\"text-5xl iconify\" data-icon=\"")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 1, "<div class=\"flex flex-col items-center my-2 w-1/2 rounded-xl lg:w-28 hover:text-black hover:bg-white animate\"><div class=\"flex flex-col justify-center items-center w-16 h-16 text-3xl\"><img src=\"")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
 			var templ_7745c5c3_Var2 string
-			templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("mdi-%s", skill.Icon))
+			templ_7745c5c3_Var2, templ_7745c5c3_Err = templ.JoinStringErrs(fmt.Sprintf("/static/icons/%s.svg", skill.Icon))
 			if templ_7745c5c3_Err != nil {
-				return templ.Error{Err: templ_7745c5c3_Err, FileName: `pages/index/skills.templ`, Line: 76, Col: 90}
+				return templ.Error{Err: templ_7745c5c3_Err, FileName: `pages/index/skills.templ`, Line: 76, Col: 62}
 			}
 			_, templ_7745c5c3_Err = templ_7745c5c3_Buffer.WriteString(templ.EscapeString(templ_7745c5c3_Var2))
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}
-			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "\"></span></div><p>")
+			templ_7745c5c3_Err = templruntime.WriteString(templ_7745c5c3_Buffer, 2, "\" class=\"w-12 h-12 invert\"></div><p>")
 			if templ_7745c5c3_Err != nil {
 				return templ_7745c5c3_Err
 			}

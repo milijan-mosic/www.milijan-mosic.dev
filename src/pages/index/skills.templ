@@ -14,47 +14,47 @@ type Group struct {
 
 var frontendSkills = []Skill{
 	{Icon: "react", Name: "React"},
-	{Icon: "language-typescript", Name: "TypeScript"},
-	{Icon: "tailwind", Name: "Tailwind CSS"},
-	{Icon: "lightning-bolt", Name: "Vite"},
+	{Icon: "typescript", Name: "TypeScript"},
+	{Icon: "tailwind-css", Name: "Tailwind CSS"},
+	{Icon: "vite", Name: "Vite"},
 }
 var frontend = Group{Title: "Frontend", Skills: frontendSkills}
 
 var backendSkills = []Skill{
-	{Icon: "language-go", Name: "Go"},
-	{Icon: "language-python", Name: "Python"},
+	{Icon: "go", Name: "Go"},
+	{Icon: "python", Name: "Python"},
 	{Icon: "nodejs", Name: "NodeJS"},
-	{Icon: "database-search", Name: "SQL"},
+	{Icon: "sql", Name: "SQL"},
 }
 var backend = Group{Title: "Backend", Skills: backendSkills}
 
 var databaseSkills = []Skill{
-	{Icon: "database", Name: "PostgreSQL"},
-	{Icon: "leaf", Name: "MongoDB"},
-	{Icon: "bird", Name: "MinIO"},
-	{Icon: "duck", Name: "DuckDB"},
+	{Icon: "postgresql", Name: "PostgreSQL"},
+	{Icon: "mongo-db", Name: "MongoDB"},
+	{Icon: "minio", Name: "MinIO"},
+	{Icon: "duckdb", Name: "DuckDB"},
 }
 var database = Group{Title: "Databases", Skills: databaseSkills}
 
 var technologiesSkills = []Skill{
 	{Icon: "aws", Name: "AWS"},
 	{Icon: "git", Name: "Git"},
-	{Icon: "menu", Name: "Redis"},
-	{Icon: "apache-kafka", Name: "Kafka"},
+	{Icon: "redis", Name: "Redis"},
+	{Icon: "kafka", Name: "Kafka"},
 }
 var technologies = Group{Title: "Technologies", Skills: technologiesSkills}
 
 var sysAdminSkills = []Skill{
-	{Icon: "penguin", Name: "Linux"},
+	{Icon: "linux", Name: "Linux"},
 	{Icon: "bash", Name: "Bash"},
-	{Icon: "lock", Name: "Caddy"},
-	{Icon: "server", Name: "Nginx"},
+	{Icon: "caddy", Name: "Caddy"},
+	{Icon: "nginx", Name: "Nginx"},
 }
 var sysAdmin = Group{Title: "System Administration", Skills: sysAdminSkills}
 
 var devOpsSkills = []Skill{
 	{Icon: "gitlab", Name: "GitLab CI"},
-	{Icon: "crosshairs", Name: "Argo CD"},
+	{Icon: "argo-cd", Name: "Argo CD"},
 	{Icon: "docker", Name: "Docker"},
 	{Icon: "kubernetes", Name: "Kubernetes"},
 }
@@ -73,7 +73,7 @@ templ RenderSkill(skills []Skill) {
 	for _, skill := range skills {
 		<div class="flex flex-col items-center my-2 w-1/2 rounded-xl lg:w-28 hover:text-black hover:bg-white animate">
 			<div class="flex flex-col justify-center items-center w-16 h-16 text-3xl">
-				<span id="icon" class="text-5xl iconify" data-icon={ fmt.Sprintf("mdi-%s", skill.Icon) }></span>
+				<img src={ fmt.Sprintf("/static/icons/%s.svg", skill.Icon) } class="w-12 h-12 invert" />
 			</div>
 			<p>{ skill.Name }</p>
 		</div>
