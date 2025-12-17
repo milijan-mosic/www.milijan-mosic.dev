@@ -1,7 +1,6 @@
-- Find new icon pack and install it locally
-- Fill website with real content (projects)
-
 - Ask for testimonials
+- Fill website with real content for projects
+
 - Add GORM + SQLite on backend (storing emails)
 
 - Minify everything (CSS, JS)
