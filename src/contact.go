@@ -2,21 +2,47 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 	"strings"
+	"time"
+
+	"context"
+
+	"github.com/google/uuid"
+
+	"gorm.io/driver/sqlite"
+	"gorm.io/gorm"
 
 	"github.com/go-chi/chi/v5"
 )
 
 type ContactRequest struct {
-	Name    string `json:"name"`
-	Email   string `json:"email"`
-	Message string `json:"message"`
+	FromSite string `json:"from_site"`
+	Name     string `json:"name"`
+	Email    string `json:"email"`
+	Message  string `json:"message"`
 }
 
 type ContactResponse struct {
 	Status  string `json:"status"`
 	Message string `json:"message"`
+}
+
+type ProjectRequest struct {
+	gorm.Model
+	RequestId string `gorm:"primaryKey"`
+	FromSite  string
+	//
+	Name    string
+	Email   string
+	Message string
+	//
+	Replied bool
+	Note    string
+	//
+	UpdatedAt time.Time
+	CreatedAt time.Time
 }
 
 func ContactRouter() http.Handler {
@@ -36,6 +62,10 @@ func HandleContact(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// Validate input
+	if strings.TrimSpace(req.FromSite) == "" {
+		respondJSON(w, http.StatusBadRequest, "invalid_name", "`FromSite` is required")
+		return
+	}
 	if strings.TrimSpace(req.Name) == "" {
 		respondJSON(w, http.StatusBadRequest, "invalid_name", "Name is required")
 		return
@@ -49,9 +79,8 @@ func HandleContact(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// TODO: Save to database OR forward to email service
-	// Example:
-	// go emailService.Send(req.Name, req.Email, req.Message)
+	saveToDb(req)
+	printDb()
 
 	respondJSON(w, http.StatusOK, "success", "Message sent successfully")
 }
@@ -75,4 +104,38 @@ func isValidEmail(email string) bool {
 		return false
 	}
 	return true
+}
+
+func saveToDb(newRequest ContactRequest) {
+	db, err := gorm.Open(sqlite.Open("test.db"), &gorm.Config{})
+	if err != nil {
+		panic("failed to connect database")
+	}
+
+	ctx := context.Background()
+	db.AutoMigrate(&ProjectRequest{})
+
+	err = gorm.G[ProjectRequest](db).Create(ctx, &ProjectRequest{
+		RequestId: uuid.New().String(),
+		FromSite:  newRequest.FromSite,
+		//
+		Name:    newRequest.Name,
+		Email:   newRequest.Email,
+		Message: newRequest.Message,
+		//
+		Replied: false,
+		Note:    "",
+	})
+}
+
+func printDb() {
+	db, err := gorm.Open(sqlite.Open("test.db"), &gorm.Config{})
+	if err != nil {
+		panic("failed to connect database")
+	}
+
+	ctx := context.Background()
+
+	requests, err := gorm.G[ProjectRequest](db).Where("from_site = ?", "Moss").Find(ctx)
+	fmt.Println(requests)
 }
