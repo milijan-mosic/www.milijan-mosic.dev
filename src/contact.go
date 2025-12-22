@@ -17,6 +17,8 @@ import (
 	"github.com/go-chi/chi/v5"
 )
 
+var dbPath = "emails.db"
+
 type ContactRequest struct {
 	FromSite string `json:"from_site"`
 	Name     string `json:"name"`
@@ -61,7 +63,6 @@ func HandleContact(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Validate input
 	if strings.TrimSpace(req.FromSite) == "" {
 		respondJSON(w, http.StatusBadRequest, "invalid_name", "`FromSite` is required")
 		return
@@ -80,8 +81,6 @@ func HandleContact(w http.ResponseWriter, r *http.Request) {
 	}
 
 	saveToDb(req)
-	printDb()
-
 	respondJSON(w, http.StatusOK, "success", "Message sent successfully")
 }
 
@@ -107,7 +106,7 @@ func isValidEmail(email string) bool {
 }
 
 func saveToDb(newRequest ContactRequest) {
-	db, err := gorm.Open(sqlite.Open("test.db"), &gorm.Config{})
+	db, err := gorm.Open(sqlite.Open(dbPath), &gorm.Config{})
 	if err != nil {
 		panic("failed to connect database")
 	}
@@ -129,7 +128,7 @@ func saveToDb(newRequest ContactRequest) {
 }
 
 func printDb() {
-	db, err := gorm.Open(sqlite.Open("test.db"), &gorm.Config{})
+	db, err := gorm.Open(sqlite.Open(dbPath), &gorm.Config{})
 	if err != nil {
 		panic("failed to connect database")
 	}
