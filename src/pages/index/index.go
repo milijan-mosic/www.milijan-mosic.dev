@@ -10,6 +10,14 @@ func Homepage(w http.ResponseWriter, r *http.Request) {
 		"Strict-Transport-Security",
 		"max-age=63072000; includeSubDomains; preload",
 	)
+	w.Header().Set(
+		"Cross-Origin-Opener-Policy",
+		"same-origin",
+	)
+	w.Header().Set(
+		"X-Frame-Options",
+		"SAMEORIGIN",
+	)
 
 	err := Index().Render(r.Context(), w)
 	if err != nil {
