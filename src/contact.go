@@ -1,0 +1,140 @@
+package main
+
+import (
+	"encoding/json"
+	"fmt"
+	"net/http"
+	"strings"
+	"time"
+
+	"context"
+
+	"github.com/google/uuid"
+
+	"gorm.io/driver/sqlite"
+	"gorm.io/gorm"
+
+	"github.com/go-chi/chi/v5"
+)
+
+var dbPath = "emails.db"
+
+type ContactRequest struct {
+	FromSite string `json:"from_site"`
+	Name     string `json:"name"`
+	Email    string `json:"email"`
+	Message  string `json:"message"`
+}
+
+type ContactResponse struct {
+	Status  string `json:"status"`
+	Message string `json:"message"`
+}
+
+type ProjectRequest struct {
+	gorm.Model
+	RequestId string `gorm:"primaryKey"`
+	FromSite  string
+	//
+	Name    string
+	Email   string
+	Message string
+	//
+	Replied bool
+	Note    string
+	//
+	UpdatedAt time.Time
+	CreatedAt time.Time
+}
+
+func ContactRouter() http.Handler {
+	r := chi.NewRouter()
+	r.Post("/", HandleContact)
+	return r
+}
+
+func HandleContact(w http.ResponseWriter, r *http.Request) {
+	var req ContactRequest
+
+	decoder := json.NewDecoder(r.Body)
+	decoder.DisallowUnknownFields()
+	if err := decoder.Decode(&req); err != nil {
+		respondJSON(w, http.StatusBadRequest, "invalid_json", "Could not parse request body")
+		return
+	}
+
+	if strings.TrimSpace(req.FromSite) == "" {
+		respondJSON(w, http.StatusBadRequest, "invalid_name", "`FromSite` is required")
+		return
+	}
+	if strings.TrimSpace(req.Name) == "" {
+		respondJSON(w, http.StatusBadRequest, "invalid_name", "Name is required")
+		return
+	}
+	if !isValidEmail(req.Email) {
+		respondJSON(w, http.StatusBadRequest, "invalid_email", "Valid email is required")
+		return
+	}
+	if len(strings.TrimSpace(req.Message)) < 5 {
+		respondJSON(w, http.StatusBadRequest, "invalid_message", "Message must be at least 5 characters long")
+		return
+	}
+
+	saveToDb(req)
+	respondJSON(w, http.StatusOK, "success", "Message sent successfully")
+}
+
+func respondJSON(w http.ResponseWriter, code int, status string, message string) {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(code)
+
+	err := json.NewEncoder(w).Encode(ContactResponse{
+		Status:  status,
+		Message: message,
+	})
+	if err != nil {
+		panic(err)
+	}
+}
+
+func isValidEmail(email string) bool {
+	email = strings.TrimSpace(email)
+	if len(email) < 5 || !strings.Contains(email, "@") || !strings.Contains(email, ".") {
+		return false
+	}
+	return true
+}
+
+func saveToDb(newRequest ContactRequest) {
+	db, err := gorm.Open(sqlite.Open(dbPath), &gorm.Config{})
+	if err != nil {
+		panic("failed to connect database")
+	}
+
+	ctx := context.Background()
+	db.AutoMigrate(&ProjectRequest{})
+
+	err = gorm.G[ProjectRequest](db).Create(ctx, &ProjectRequest{
+		RequestId: uuid.New().String(),
+		FromSite:  newRequest.FromSite,
+		//
+		Name:    newRequest.Name,
+		Email:   newRequest.Email,
+		Message: newRequest.Message,
+		//
+		Replied: false,
+		Note:    "",
+	})
+}
+
+func printDb() {
+	db, err := gorm.Open(sqlite.Open(dbPath), &gorm.Config{})
+	if err != nil {
+		panic("failed to connect database")
+	}
+
+	ctx := context.Background()
+
+	requests, err := gorm.G[ProjectRequest](db).Where("from_site = ?", "Moss").Find(ctx)
+	fmt.Println(requests)
+}

@@ -1,0 +1,47 @@
+package pages
+
+import "fmt"
+
+type Service struct {
+	Icon      string
+	Title     string
+	Paragraph string
+}
+
+var allServices = []Service{
+	{Icon: "web", Title: "Web App Development", Paragraph: "Modern, responsive, and fast front-end applications. Building secure, maintainable APIs, microservices, and real-time systems."},
+	{Icon: "cloud", Title: "Cloud App Development", Paragraph: "Cloud-native deployments with scalability, automation, and strong security. Optimized infrastructure using containers, Kubernetes, and CI/CD."},
+	{Icon: "desktop", Title: "Desktop App Development", Paragraph: "Lightweight, high-performance desktop tools tailored to your workflow. Reliable systems built for speed, productivity, and long-term maintainability."},
+	{Icon: "mobile", Title: "Mobile App Development", Paragraph: "Smooth, performant mobile apps with clean UX and strong backend integration. Cross-platform, secure, and optimized for a seamless user experience."},
+}
+
+templ RenderService(services []Service) {
+	for _, service := range allServices {
+		<div class="flex flex-col items-center mt-16 lg:w-1/2">
+			<div class="flex flex-col items-center">
+				<img src={ fmt.Sprintf("/static/icons/%s.svg", service.Icon) } alt={ fmt.Sprintf("Icon for the service section named %s app development", service.Icon) } class="w-12 h-12 invert"/>
+				<h2 class="mt-2 text-xl">{ service.Title }</h2>
+			</div>
+			<div class="mt-4 lg:w-[400px]">
+				<p>{ service.Paragraph }</p>
+			</div>
+		</div>
+	}
+}
+
+templ Services() {
+	<section id="services" class="glass-card p-4 md:p-8 my-16 mx-4 flex flex-col items-center md:w-[400px] lg:w-[550px] xl:w-[1000px]">
+		<h2 class="mt-4 text-2xl font-bold text-center">Services</h2>
+		<div class="flex flex-row flex-wrap mb-8">
+			@RenderService(allServices)
+		</div>
+		<div class="flex flex-col items-center mb-2">
+			<p class="mt-16 mb-8">
+				If you’re interested in collaborating or need support on a project, feel free to get in touch :)
+			</p>
+			<a href="/#contact-me" class="p-2 px-6 mb-4 text-lg bg-sky-800 rounded-full border-sky-500 animate md:px-8 border-1 hover:border-white hover:bg-white hover:text-black hover:cursor-pointer">
+				Let’s work
+			</a>
+		</div>
+	</section>
+}

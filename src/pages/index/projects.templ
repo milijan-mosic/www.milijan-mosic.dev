@@ -1,0 +1,99 @@
+package pages
+
+import "fmt"
+
+type Project struct {
+	Name         string
+	Type         string
+	Description  string
+	Technologies []string
+	Role         []string
+	Thumbnail    string
+}
+
+var allProjects = []Project{
+	Project{
+		Name:         "Aleksandra Bengin",
+		Type:         "Cello Performer Website",
+		Description:  "A personal website for a professional cello performer, designed to present upcoming concerts, ongoing collaborations, and artistic projects. The platform serves as a central place for audiences, organizers, and collaborators to explore performances, media, and current engagements.",
+		Technologies: []string{"React", "TypeScript", "Tailwind CSS", "Go", "PostgreSQL", "Caddy"},
+		Role:         []string{"Full-Stack Development", "UI Design & Implementation", "Deployment & Maintenance"},
+		Thumbnail:    "/static/images/projects/aleksandra-bengin.webp",
+	},
+	Project{
+		Name:         "Alloqis",
+		Type:         "Data Analytics & Forecasting Platform",
+		Description:  "A data-driven platform focused on cleaning, filtering, and aggregating large datasets to support business decision-making. It combines interactive dashboards, tables, and visualizations with AI-based demand and supply forecasting to help teams plan more efficiently.",
+		Technologies: []string{"Dash", "Bootstrap", "Python", "DuckDB", "SQL", "Docker"},
+		Role:         []string{"Full-Stack Development", "UI Implementation", "Code Quality & Refactoring"},
+		Thumbnail:    "/static/images/projects/alloqis.webp",
+	},
+	Project{
+		Name:         "Recall Taxi",
+		Type:         "Ride-Hailing Platform",
+		Description:  "A modern ride-hailing application aimed at digitizing and improving traditional taxi services. The platform focuses on real-time ride matching, driver and passenger apps, and scalable infrastructure, bringing an Uber-like experience tailored for the Serbian market.",
+		Technologies: []string{"React", "TypeScript", "Go", "Python", "PostgreSQL", "MinIO", "Redis", "Kafka"},
+		Role:         []string{"Full-Stack Development", "System Architecture", "Authentication & Authorization", "Access Control Systems"},
+		Thumbnail:    "/static/images/projects/recall-taxi.webp",
+	},
+	Project{
+		Name:         "CyberPopUp",
+		Type:         "Cybersecurity Talent & Solutions Platform",
+		Description:  "A matchmaking platform connecting companies facing cybersecurity challenges with verified security experts. By addressing demand and supply from both sides, the platform streamlines onboarding, discovery, and collaboration, enabling faster and more effective security solutions.",
+		Technologies: []string{"Python", "PostgreSQL", "MinIO", "Docker", "Caddy"},
+		Role:         []string{"Backend Development", "Code Quality & Refactoring", "Authentication & Authorization"},
+		Thumbnail:    "/static/images/projects/cyberpopup.webp",
+	},
+}
+
+templ RenderProjects(projects []Project) {
+	for _, project := range projects {
+		<div class="flex flex-col items-center mb-16 rounded-xl lg:flex-row lg:items-stretch bg-white/25">
+			<div class="flex justify-center items-center mb-4 w-full rounded-t-xl shadow-md bg-black/50 lg:shadow-none lg:w-1/2 lg:mb-0 lg:rounded-t-none lg:rounded-l-xl">
+				<img
+					loading="lazy"
+					src={ project.Thumbnail }
+					alt={ fmt.Sprintf("Screenshot of the project named %s", project.Name) }
+					class="rounded-t-2xl lg:rounded-t-none"
+				/>
+			</div>
+			<div class="flex flex-col items-center w-full lg:p-8 lg:w-1/2">
+				<h2 class="text-2xl font-bold">
+					{ project.Name }
+				</h2>
+				<p class="px-4 mb-8 lg:px-8">
+					{ project.Type }
+				</p>
+				<p class="p-4 mb-8 md:p-8">
+					{ project.Description }
+				</p>
+				<div class="flex flex-wrap gap-2 justify-center px-4 mb-4">
+					for _, role := range project.Role {
+						<span class="px-4 py-2 text-sm text-black rounded-full bg-white/50">
+							{ role }
+						</span>
+					}
+				</div>
+				<div class="flex flex-wrap gap-2 justify-center px-4 mb-8">
+					for _, tech := range project.Technologies {
+						<span class="px-2 py-1 text-sm rounded-full border-white border-1">
+							{ tech }
+						</span>
+					}
+				</div>
+			</div>
+		</div>
+	}
+}
+
+templ Projects() {
+	<section id="projects" class="glass-card p-4 md:p-8 my-16 mx-4 flex flex-col items-center md:w-[400px] lg:w-[550px] xl:w-[1000px]">
+		<h2 class="mt-4 mb-16 text-2xl font-bold">Projects</h2>
+		<div class="flex flex-col justify-center w-full lg:flex-row lg:flex-wrap">
+			@RenderProjects(allProjects)
+		</div>
+		<a href="/#contact-me" class="p-2 px-6 mt-8 mb-4 text-lg bg-sky-800 rounded-full border-sky-500 animate md:px-8 border-1 hover:border-white hover:bg-white hover:text-black hover:cursor-pointer">
+			Let’s build something
+		</a>
+	</section>
+}

@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+@layer components {
+  .glass-card {
+    @apply overflow-hidden to-transparent rounded-3xl border shadow-xl backdrop-blur-xl outline-none border-white/30 bg-linear-to-br from-white/20;
+  }
+
+  .animate {
+    @apply transition-all duration-75 ease-linear;
+  }
+
+  .mobile-nav-link {
+    @apply p-4 w-full text-lg font-medium hover:bg-white hover:text-black;
+  }
+
+  .footer-nav-link {
+    @apply flex justify-center items-center m-1 w-12 h-12 text-2xl rounded-xl border-2 invert border-black/35 hover:border-white/35 hover:invert-0 hover:bg-white;
+  }
+
+  .form-input {
+    @apply p-2 w-full rounded-xl border-2 placeholder-white/50 lg:w-1/2 bg-white/25 border-white/0 focus:outline-none focus:border-white;
+  }
+}
