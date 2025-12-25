@@ -1,6 +1,25 @@
 milijan-mosic.dev {
     tls /etc/caddy/fullchain.pem /etc/caddy/privkey.pem
 
+    header {
+	# disable FLoC tracking
+	Permissions-Policy interest-cohort=()
+
+	# enable HSTS
+	Strict-Transport-Security max-age=31536000;
+
+	# disable clients from sniffing the media type
+	X-Content-Type-Options nosniff
+
+	# clickjacking protection
+	X-Frame-Options DENY
+    }
+
+    route {
+	header           Cache-Control max-age=3600
+	header /static/* Cache-Control max-age=31536000
+    }
+	
     handle {
         reverse_proxy my_app:20000
     }

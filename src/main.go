@@ -25,7 +25,7 @@ func main() {
 	app.Use(middleware.AllowContentType("application/json", "text/html", "text/javascript", "text/css", "text/plain"))
 	app.Use(middleware.Compress(5, "application/json", "text/html", "text/javascript", "text/css", "text/plain"))
 	app.Use(middleware.CleanPath)
-	app.Use(httprate.LimitByIP(100, 1*time.Minute))
+	app.Use(httprate.LimitByIP(1000, 1*time.Minute))
 	app.Use(middleware.Timeout(5 * time.Second))
 	app.Use(middleware.Heartbeat("/health"))
 	app.Use(middleware.Recoverer)
