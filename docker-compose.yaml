@@ -7,7 +7,7 @@ services:
       - 80:80
       - 443:443
     volumes:
-      - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+      - ./server/Caddyfile:/etc/caddy/Caddyfile
       - ./certs/fullchain.pem:/etc/caddy/fullchain.pem
       - ./certs/privkey.pem:/etc/caddy/privkey.pem
     networks:
