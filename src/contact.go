@@ -35,14 +35,11 @@ type ProjectRequest struct {
 	gorm.Model
 	RequestId string `gorm:"primaryKey"`
 	FromSite  string
-	//
-	Name    string
-	Email   string
-	Message string
-	//
-	Replied bool
-	Note    string
-	//
+	Name      string
+	Email     string
+	Message   string
+	Replied   bool
+	Note      string
 	UpdatedAt time.Time
 	CreatedAt time.Time
 }
@@ -117,13 +114,11 @@ func saveToDb(newRequest ContactRequest) {
 	err = gorm.G[ProjectRequest](db).Create(ctx, &ProjectRequest{
 		RequestId: uuid.New().String(),
 		FromSite:  newRequest.FromSite,
-		//
-		Name:    newRequest.Name,
-		Email:   newRequest.Email,
-		Message: newRequest.Message,
-		//
-		Replied: false,
-		Note:    "",
+		Name:      newRequest.Name,
+		Email:     newRequest.Email,
+		Message:   newRequest.Message,
+		Replied:   false,
+		Note:      "",
 	})
 }
 
