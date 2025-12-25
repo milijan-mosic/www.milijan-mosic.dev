@@ -1,6 +1,24 @@
 app.moss.local {
     tls internal
 
+    header {
+        Referrer-Policy "no-referrer"
+        Cache-Control "max-age=31536000"
+        X-XSS-Protection "1; mode=block"
+        X-Content-Type-Options "nosniff"
+        Cross-Origin-Opener-Policy "same-origin"
+        Strict-Transport-Security "max-age=63072000; includeSubDomains; preload"
+        X-Frame-Options "deny"
+        Content-Security-Policy "default-src 'none'; manifest-src 'self'; script-src 'self'; connect-src 'self'; style-src 'self'; media-src 'self'; font-src 'self'; img-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; require-trusted-types-for 'script';"
+        -Last-Modified
+        -Server
+    }
+
+    route {
+        header           Cache-Control max-age=3600
+        header /static/* Cache-Control max-age=31536000
+    }
+
     handle {
         reverse_proxy my_app:20000
     }
