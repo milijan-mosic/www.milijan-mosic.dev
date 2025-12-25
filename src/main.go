@@ -32,7 +32,7 @@ func main() {
 
 	app.Get("/", pages.Homepage)
 	app.Route("/api/contact", func(cr chi.Router) {
-		cr.Mount("/", ContactRouter())
+		cr.Mount("/", utils.ContactRouter())
 	})
 
 	app.Get("/robots.txt", func(w http.ResponseWriter, r *http.Request) {

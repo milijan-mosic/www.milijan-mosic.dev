@@ -1,4 +1,4 @@
-package main
+package utils
 
 import (
 	"encoding/json"
@@ -17,7 +17,7 @@ import (
 	"github.com/go-chi/chi/v5"
 )
 
-var dbPath = "emails.db"
+const dbPath = "emails.db"
 
 type ContactRequest struct {
 	FromSite string `json:"from_site"`
@@ -50,6 +50,19 @@ func ContactRouter() http.Handler {
 	return r
 }
 
+func respondJSON(w http.ResponseWriter, code int, status string, message string) {
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(code)
+
+	err := json.NewEncoder(w).Encode(ContactResponse{
+		Status:  status,
+		Message: message,
+	})
+	if err != nil {
+		panic(err)
+	}
+}
+
 func HandleContact(w http.ResponseWriter, r *http.Request) {
 	var req ContactRequest
 
@@ -79,19 +92,6 @@ func HandleContact(w http.ResponseWriter, r *http.Request) {
 
 	saveToDb(req)
 	respondJSON(w, http.StatusOK, "success", "Message sent successfully")
-}
-
-func respondJSON(w http.ResponseWriter, code int, status string, message string) {
-	w.Header().Set("Content-Type", "application/json")
-	w.WriteHeader(code)
-
-	err := json.NewEncoder(w).Encode(ContactResponse{
-		Status:  status,
-		Message: message,
-	})
-	if err != nil {
-		panic(err)
-	}
 }
 
 func isValidEmail(email string) bool {
