@@ -1,0 +1,7 @@
+milijan-mosic.dev {
+    tls /etc/caddy/fullchain.pem /etc/caddy/privkey.pem
+
+    handle {
+        reverse_proxy my_app:20000
+    }
+}

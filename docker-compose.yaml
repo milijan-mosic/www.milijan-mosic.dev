@@ -1,0 +1,31 @@
+services:
+  server:
+    image: caddy:2.11-alpine
+    container_name: server
+    restart: always
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./caddy/Caddyfile:/etc/caddy/Caddyfile
+      - ./certs/fullchain.pem:/etc/caddy/fullchain.pem
+      - ./certs/privkey.pem:/etc/caddy/privkey.pem
+    networks:
+      - heartbit
+
+  my_app:
+    image: my_app:latest
+    container_name: my_app
+    restart: on-failure
+    build:
+      context: ./src
+      dockerfile: docker/Dockerfile
+    ports:
+      - "20000:20000"
+    depends_on:
+      - server
+    networks:
+      - heartbit
+
+networks:
+  heartbit:
