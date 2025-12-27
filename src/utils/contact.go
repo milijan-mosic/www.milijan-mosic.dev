@@ -149,10 +149,11 @@ func sendEmail(name, email, message string) {
 	client := resend.NewClient(apiKey)
 
 	params := &resend.SendEmailRequest{
-		From:    fmt.Sprintf("%s <%s>", name, email),
+		From:    fmt.Sprintf("%s <%s>", name, "onboarding@resend.dev"),
 		To:      []string{"milijan.mosic@gmail.com"},
-		Html:    fmt.Sprintf("<p>%s</p>", message),
+		Html:    fmt.Sprintf("<p>My email: %s</p> <p>%s</p>", email, message),
 		Subject: "Request from the client",
+		ReplyTo: email,
 	}
 
 	sent, err := client.Emails.Send(params)
