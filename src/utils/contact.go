@@ -4,10 +4,14 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"os"
 	"strings"
 	"time"
 
 	"context"
+
+	_ "github.com/joho/godotenv/autoload"
+	"github.com/resend/resend-go/v3"
 
 	"github.com/google/uuid"
 
@@ -90,6 +94,7 @@ func HandleContact(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	sendEmail(req.Name, req.Email, req.Message)
 	saveToDb(req)
 	respondJSON(w, http.StatusOK, "success", "Message sent successfully")
 }
@@ -132,4 +137,28 @@ func printDb() {
 
 	requests, err := gorm.G[ProjectRequest](db).Where("from_site = ?", "Moss").Find(ctx)
 	fmt.Println(requests)
+}
+
+func sendEmail(name, email, message string) {
+	apiKey := os.Getenv("RESEND_API_KEY")
+	if apiKey == "" {
+		fmt.Println("Resend API key is empty!")
+		return
+	}
+
+	client := resend.NewClient(apiKey)
+
+	params := &resend.SendEmailRequest{
+		From:    fmt.Sprintf("%s <%s>", name, email),
+		To:      []string{"milijan.mosic@gmail.com"},
+		Html:    fmt.Sprintf("<p>%s</p>", message),
+		Subject: "Request from the client",
+	}
+
+	sent, err := client.Emails.Send(params)
+	if err != nil {
+		fmt.Println(err.Error())
+		return
+	}
+	fmt.Println(sent.Id)
 }
