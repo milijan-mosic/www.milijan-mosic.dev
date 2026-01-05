@@ -55,6 +55,8 @@ templ RenderProjects(projects []Project) {
 					src={ project.Thumbnail }
 					alt={ fmt.Sprintf("Screenshot of the project named %s", project.Name) }
 					class="rounded-t-2xl lg:rounded-t-none"
+					width="512"
+					height="512"
 				/>
 			</div>
 			<div class="flex flex-col items-center w-full lg:p-8 lg:w-1/2">
