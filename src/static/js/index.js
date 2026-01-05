@@ -38,13 +38,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       status.textContent = "Request sent successfully!";
       status.className =
-        "p-4 px-6 mt-4 mb-8 text-xl text-center text-green-500 rounded-full md:px-8 bg-black/50";
+        "p-8 mt-4 mb-8 text-xl text-center text-green-500 rounded-full bg-black/50";
 
       form.reset();
     } catch (err) {
       status.textContent = "Something went wrong. Try again later.";
       status.className =
-        "p-4 px-6 mt-4 mb-8 text-xl text-center text-red-500 rounded-full md:px-8 bg-black/50";
+        "p-8 mt-4 mb-8 text-xl text-center text-red-500 rounded-full bg-black/50";
     }
 
     button.disabled = false;
