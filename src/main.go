@@ -66,6 +66,8 @@ func main() {
 	filesDir := http.Dir(filepath.Join(workDir, "static"))
 	utils.FileServer(app, "/static", filesDir)
 
+	utils.PrintMails()
+
 	port := "20000"
 	fmt.Printf("Listening on port: %s\n", port)
 	err := http.ListenAndServe(":"+port, app)

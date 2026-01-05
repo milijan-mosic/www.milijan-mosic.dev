@@ -127,7 +127,7 @@ func saveToDb(newRequest ContactRequest) {
 	})
 }
 
-func printDb() {
+func PrintMails() {
 	db, err := gorm.Open(sqlite.Open(dbPath), &gorm.Config{})
 	if err != nil {
 		panic("failed to connect database")
@@ -136,7 +136,9 @@ func printDb() {
 	ctx := context.Background()
 
 	requests, err := gorm.G[ProjectRequest](db).Where("from_site = ?", "Moss").Find(ctx)
-	fmt.Println(requests)
+	for _, request := range requests {
+		fmt.Println(request)
+	}
 }
 
 func sendEmail(name, email, message string) {
